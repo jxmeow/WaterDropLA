@@ -110,7 +110,9 @@ def newest_volunteer_information(path):
     #Check to see if we have any files properly named. If no files are properly named, send
     #an error message.
     if not paths:
-        raise TypeError("No files with the proper name!")
+        print("No files with the proper name! (Exit the window and try again after sorting the error out)")
+        time.sleep(120)
+        raise TypeError()
 
     #Now that we have a list of all the relevant files in the Downloads folder, we can check
     #which is the most recent. And to make sure the file isn't outdated, for instance, if the
@@ -125,9 +127,13 @@ def newest_volunteer_information(path):
         if recent_file.endswith('.csv'):
             return recent_file
         else:
-            raise TypeError("Make sure to download the Google Sheet as a .csv file!")
+            print("Make sure to download the Google Sheet as a .csv file! (Exit the window and try again after downloading)")
+            time.sleep(120)
+            raise TypeError()
     else:
-        raise TypeError(rf"Please go download the latest file and ensure it's named properly!")
+        print(rf"Please go download the latest file and ensure it's named properly! (Download the latest info and try again)")
+        time.sleep(120)
+        raise TypeError()
 
 CSV_FILE = newest_volunteer_information(download_path)
 
@@ -160,6 +166,7 @@ def load_members_from_csv(csv_filename):
                         members.append({"nickname": row[0] + ' ' + row[1] + row[2], "phone_number": row[3]})
     except Exception as e:
         print(f"Error reading CSV: {e}")
+        time.sleep(120)
     return members
 
 #Function to Add Members to GroupMe
@@ -178,12 +185,15 @@ def add_members_to_group(group_id, members):
     #check if the volunteers got added. 
     if response.status_code == 201:
         dramatic_effect()  # Call the binary stream effect function
-        print("Members successfully added!")
+        print("Members successfully added! You can close this window now.")
+        time.sleep(120)
     elif response.status_code == 202:
         dramatic_effect()  # Call the binary stream effect function
-        print("Members successfully, just give it some time.")
+        print("Members successfully, just give it some time. You can close this window now.")
+        time.sleep(120)
     else:
         print(f"Error adding members: {response.status_code} - {response.text}")
+        time.sleep(120)
 
 """
 The following function does absolutly nothing! It is just a troll! 🤣
