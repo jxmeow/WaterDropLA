@@ -131,7 +131,7 @@ def newest_volunteer_information(path):
             time.sleep(120)
             raise TypeError()
     else:
-        print(rf"Please go download the latest file and ensure it's named properly! (Download the latest info and try again)")
+        print(rf"Please go download the latest file and ensure it's named properly! (Exit the window, download the latest info and try again)")
         time.sleep(120)
         raise TypeError()
 
@@ -184,11 +184,11 @@ def add_members_to_group(group_id, members):
     #the time difference is like a second. I am calling it a success here, but still
     #check if the volunteers got added. 
     if response.status_code == 201:
-        dramatic_effect()  # Call the binary stream effect function
+        #dramatic_effect()  # Call the binary stream effect function
         print("Members successfully added! You can close this window now.")
         time.sleep(120)
     elif response.status_code == 202:
-        dramatic_effect()  # Call the binary stream effect function
+        #dramatic_effect()  # Call the binary stream effect function
         print("Members successfully, just give it some time. You can close this window now.")
         time.sleep(120)
     else:
