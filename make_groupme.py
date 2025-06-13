@@ -46,7 +46,7 @@ from datetime import datetime
 
 #CONFIGURATION - Locally, each user will have to create a GroupMe
 #Developer account, and copy and paste their access token here.
-ACCESS_TOKEN = ""
+ACCESS_TOKEN = "s2aYE9Xjmb1g5B6f3is2yuJgWXcvRgzwf7FCgMrw"
 
 #Constructing the path to the downloads folder. It is possible that the path
 #is different, but this should be the default one.
@@ -131,7 +131,7 @@ def newest_volunteer_information(path):
             time.sleep(120)
             raise TypeError()
     else:
-        print(rf"Please go download the latest file and ensure it's named properly! (Exit the window, download the latest info and try again)")
+        print(rf"Please go download the latest file and ensure it's named properly! (Download the latest info and try again)")
         time.sleep(120)
         raise TypeError()
 
@@ -164,6 +164,14 @@ def load_members_from_csv(csv_filename):
                     else:                        
                         #Adding a space between first and last name for formatting
                         members.append({"nickname": row[0] + ' ' + row[1] + row[2], "phone_number": row[3]})
+                else:
+                    print(rf'''The csv file is missing at least one of: 
+First Name, Last Name, Preferred Pronouns, Phone Number. 
+Please return to the Jotform Sheet and make sure all the mentioned information is copied 
+into a new Google Sheet and download it again as 'volunteersNumbers.csv' 
+(Exit the window and try again)''')
+                    time.sleep(120)
+                    raise TypeError()
     except Exception as e:
         print(f"Error reading CSV: {e}")
         time.sleep(120)
